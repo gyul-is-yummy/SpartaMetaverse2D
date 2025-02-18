@@ -3,20 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    Up,
-    Down,
-    Left,
-    Right
-}
-
 public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
     protected AnimationHandler animationHandler;
-
-    protected Direction direction;
 
     [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] private Transform weaponPivot;
