@@ -1,31 +1,67 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction
+{
+    Up,
+    Down,
+    Left,
+    Right
+}
+
 public class BaseController : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
+    protected AnimationHandler animationHandler;
+
+    protected Direction direction;
 
     [SerializeField] private SpriteRenderer characterRenderer;
     [SerializeField] private Transform weaponPivot;
 
-
-    protected Vector2 movementDirection = Vector2.zero; // 이동 방향
+    // 이동 방향
+    protected Vector2 movementDirection = Vector2.zero; 
     public Vector2 MovementDirection { get { return movementDirection; }}
 
+    // 보는 방향
     protected Vector2 lookDirection = Vector2.zero;
-    public Vector2 LookDirection = Vector2.zero;
+    public Vector2 LookDirection { get { return lookDirection; } }
 
+    protected virtual void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+        animationHandler = GetComponent<AnimationHandler>();
+    }
 
-    // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
-        
+        HandleAction();
+        //Rotate(lookDirection);
+    }
+
+    protected virtual void FixedUpdate()
+    {
+        Movment(movementDirection);
+    }
+
+    protected virtual void HandleAction()
+    {
+
+    }
+
+    private void Movment(Vector2 direction)
+    {
+        direction = direction * 5;
+        _rigidbody.velocity = direction;
+
+        animationHandler.Move(direction);
+        animationHandler.CheckDirection(direction);
     }
 }
