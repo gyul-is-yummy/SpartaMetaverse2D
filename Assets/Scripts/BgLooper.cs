@@ -19,32 +19,38 @@ public class BgLooper : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == (int)Layer.Ground)
+        
+    }
+
+    //ì¶©ëŒí–ˆì„ ë•Œ
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("Triggered: " + collision.name);
+
+
+        if (collision.gameObject.CompareTag("MiddleBackground"))
         {
             count++;
 
-            //Ãæµ¹ÇÑ Äİ¶óÀÌ´õÀÇ ³ĞÀÌ¸¦ ¹Ş¾Æ¿Í¼­ ÀúÀå
-            widthOfBgObject = ((BoxCollider2D)(collision.collider)).size.x;
-            //Ãæµ¹ÇÑ Äİ¶óÀÌ´õÀÇ À§Ä¡¸¦ ¹Ş¾Æ¿Í¼­ ÀúÀå
+            //ì¶©ëŒí•œ ì½œë¼ì´ë”ì˜ ë„“ì´ë¥¼ ë°›ì•„ì™€ì„œ ì €ì¥
+            widthOfBgObject = ((BoxCollider2D)collision).size.x;
+            //widthOfBgObject = ((BoxCollider2D)(collision.collider)).size.x;
+
+            //ì¶©ëŒí•œ ì½œë¼ì´ë”ì˜ ìœ„ì¹˜ë¥¼ ë°›ì•„ì™€ì„œ ì €ì¥
             collsionPos = collision.transform.position;
 
             if (count % 2 == 0)
             {
-                // Ãæµ¹ ¹°Ã¼ÀÇ xÃà °ª = ±âÁ¸ xÃà + Ãæµ¹ ¹°Ã¼ÀÇ ³ĞÀÌ * 4 °ªÀ¸·Î ¼³Á¤
+                // ì¶©ëŒ ë¬¼ì²´ì˜ xì¶• ê°’ = ê¸°ì¡´ xì¶• + ì¶©ëŒ ë¬¼ì²´ì˜ ë„“ì´ * 4 ê°’ìœ¼ë¡œ ì„¤ì •
                 collsionPos.x += widthOfBgObject * numBgCount;
 
-                //°è»êÇÑ °ªÀ» Ãæµ¹ÇÑ Äİ¶óÀÌ´õÀÇ ºÎ¸ğÀÇ À§Ä¡·Î ¼³Á¤
+                //ê³„ì‚°í•œ ê°’ì„ ì¶©ëŒí•œ ì½œë¼ì´ë”ì˜ ë¶€ëª¨ì˜ ìœ„ì¹˜ë¡œ ì„¤ì •
                 collision.transform.parent.position = collsionPos;
             }
 
             return;
         }
-    }
 
-    //Ãæµ¹ÇßÀ» ¶§
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Triggered: " + collision.name);
 
         if (collision.CompareTag("Obstacle"))
         {

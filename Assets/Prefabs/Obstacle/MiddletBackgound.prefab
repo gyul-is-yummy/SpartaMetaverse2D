@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1721063252979411442}
   m_Layer: 6
   m_Name: MiddletBackgound
-  m_TagString: Background
+  m_TagString: MiddleBackground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3328,7 +3328,7 @@ GameObject:
   - component: {fileID: 733323053717614788}
   m_Layer: 6
   m_Name: BottomCollider
-  m_TagString: Background
+  m_TagString: MiddleBackground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3405,7 +3405,7 @@ GameObject:
   - component: {fileID: 6377792340524589056}
   m_Layer: 6
   m_Name: TopCollider
-  m_TagString: Background
+  m_TagString: MiddleBackground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

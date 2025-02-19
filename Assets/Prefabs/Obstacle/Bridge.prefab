@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7424069743535733054}
   - component: {fileID: 5279347220685907515}
   - component: {fileID: 3310558756606988015}
+  - component: {fileID: 8934757832805563820}
   m_Layer: 0
   m_Name: Bridge
   m_TagString: Obstacle
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8226261, y: 4.898308}
   m_EdgeRadius: 0
+--- !u!114 &8934757832805563820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505614250170889131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ef6f3a16b64b94c8b1f98d11613f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

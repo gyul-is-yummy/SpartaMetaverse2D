@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Obstacle
   - Background
+  - MiddleBackground
+  - Boat
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground

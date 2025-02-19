@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-enum Layer
+public enum Layer
 {
+    Player = 3,
     Ground = 6,
     Obstacle = 7,
     Boat = 8,
@@ -112,11 +113,6 @@ public class PlayerController : BaseController
         _rigidbody.AddForce(jumpForse * Vector3.up, ForceMode2D.Impulse);
         _rigidbody.velocity = new Vector2(0f, _rigidbody.velocity.y);
     }
-
-    public void JumpDown()
-    {
-    }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
