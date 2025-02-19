@@ -16,6 +16,7 @@ public class PlayerController : BaseController
     {
         base.Start();
         //camera = Camera.main;
+        jumpTimer = 0.7f;
     }
    
     protected override void Update()
@@ -68,11 +69,11 @@ public class PlayerController : BaseController
     {
         //중력 적용
         isGrounded = false;
-        _rigidbody.gravityScale = 13f;
+        //_rigidbody.gravityScale = 13f;
 
         //점프시킴
         _rigidbody.AddForce(5000f * Vector3.up);
-        Debug.Log("Jump 진입");
+        //Debug.Log("Jump 진입");
 
         Invoke("JumpDown", jumpTimer);
         
@@ -81,7 +82,7 @@ public class PlayerController : BaseController
 
     public void JumpDown()
     {
-        _rigidbody.gravityScale = 0f;
+        //_rigidbody.gravityScale = 0f;
     }
 
 }
