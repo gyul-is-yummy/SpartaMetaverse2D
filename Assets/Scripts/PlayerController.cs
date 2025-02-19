@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
+    [SerializeField] private Transform weaponPivot;
+
     //private Camera camera;
     bool isJump = false;
     public float jumpTimer = 0.7f;

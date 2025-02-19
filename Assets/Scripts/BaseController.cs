@@ -9,7 +9,7 @@ public class BaseController : MonoBehaviour
     protected AnimationHandler animationHandler;
 
     [SerializeField] private SpriteRenderer characterRenderer;
-    [SerializeField] private Transform weaponPivot;
+    //
 
     // 이동 방향
     protected Vector2 movementDirection = Vector2.zero; 
