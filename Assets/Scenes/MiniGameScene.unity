@@ -4185,7 +4185,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -7296,11 +7296,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2721427310213666484, guid: 56299db87d1050e49b4fec9bd98d88e6, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7144492023051764885, guid: 56299db87d1050e49b4fec9bd98d88e6, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7379025445752102281, guid: 56299db87d1050e49b4fec9bd98d88e6, type: 3}
       propertyPath: m_LocalPosition.x

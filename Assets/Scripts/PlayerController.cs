@@ -73,8 +73,23 @@ public class PlayerController : BaseController
     protected override void HandleAction()
     {
         if (CurrentScene == Scene.MiniGame)
+        {   
+            if(isJump)
+            {
+                //보트와 x좌표 동기화
+                transform.position = new Vector2(boatObject.transform.position.x, transform.position.y);
+            }
+            else
+            {
+                //보트와 좌표 동기화
+                transform.position = new Vector2(boatObject.transform.position.x, boatObject.transform.position.y);
+            }
+        }
+
+        //보트를 타고 있으면 아래 연산을 하지 않음
+        if(transform.parent != null)
         {
-            transform.position = new Vector2(boatObject.transform.position.x, transform.position.y);
+            return;
         }
 
         //왼쪽(혹은 A)키를 누르면 -1, 오른쪽(혹은 D)키를 누르면 1, 아무것도 안 누르면 0 반환
@@ -95,7 +110,6 @@ public class PlayerController : BaseController
 
         //점프시킴
         _rigidbody.AddForce(jumpForse * Vector3.up, ForceMode2D.Impulse);
-
         _rigidbody.velocity = new Vector2(0f, _rigidbody.velocity.y);
     }
 
