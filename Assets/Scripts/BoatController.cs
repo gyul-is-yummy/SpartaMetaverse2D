@@ -14,6 +14,7 @@ public class BoatController : BaseController
         base.Update();
     }
 
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -27,5 +28,6 @@ public class BoatController : BaseController
 
         movementDirection = new Vector2(horizontal, vertical).normalized;
     }
+
 
 }

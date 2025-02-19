@@ -13,10 +13,10 @@ public class FollowCamera : MonoBehaviour
         if (target == null) return;
 
         offsetX = transform.position.x - target.position.x;
-        offsetY = transform.position.x - target.position.x;
+        offsetY = transform.position.y - target.position.y;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (target == null) return;
 

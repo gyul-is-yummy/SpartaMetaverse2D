@@ -2,59 +2,80 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+enum Layer
+{
+    Ground = 6,
+    Obstacle = 7
+}
+
+public enum Scene
+{
+    Main,
+    MiniGame
+}
 
 public class PlayerController : BaseController
 {
     [SerializeField] private Transform weaponPivot;
 
+    public float jumpForse = 0f;
+
+    Scene CurrentScene;
+
     //private Camera camera;
-    bool isJump = false;
+    public bool isJump = false;
     public float jumpTimer = 0.7f;
 
     bool isGrounded = true;
-    Vector2 jumpPosition = Vector2.zero;
+    Vector2 boatVelocity = Vector2.zero;
+
+    Collision2D boatCollision = null;
+
+    GameObject boatObject;
 
     protected override void Start()
     {
         base.Start();
         //camera = Camera.main;
-        jumpTimer = 0.7f;
+
+        boatObject = GameObject.Find("Boat");
+
+
+        jumpForse = 7f;
+
+        CurrentScene = Scene.MiniGame;
     }
    
     protected override void Update()
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
         {
-            isJump = true;
+            Jump();
         }
-
     }
 
     protected override void FixedUpdate()
     {
+        if (isJump)
+        {
+            //transform.position.x = 
+            return;
+        }
+
         base.FixedUpdate();
 
         Vector3 velocity = _rigidbody.velocity;
-
-        if(isJump)
-        {
-            Jump();
-        }
-
-
-
-        //_rigidbody.velocity = velocity;
-
-        //float angle = Mathf.Clamp((_rigidbody.velocity.y * 10f), -90, 90);
-        //float lerpAngle = Mathf.Lerp(transform.rotation.eulerAngles.z, angle, Time.fixedDeltaTime * 5f);
-        //transform.rotation = Quaternion.Euler(0, 0, lerpAngle);
-
     }
 
     protected override void HandleAction()
     {
+        if (CurrentScene == Scene.MiniGame)
+        {
+            transform.position = new Vector2(boatObject.transform.position.x, transform.position.y);
+        }
+
         //왼쪽(혹은 A)키를 누르면 -1, 오른쪽(혹은 D)키를 누르면 1, 아무것도 안 누르면 0 반환
         float horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -69,22 +90,26 @@ public class PlayerController : BaseController
 
     public void Jump() 
     {
-        //중력 적용
-        isGrounded = false;
-        //_rigidbody.gravityScale = 13f;
+        isJump = true;
 
         //점프시킴
-        _rigidbody.AddForce(5000f * Vector3.up);
-        //Debug.Log("Jump 진입");
+        _rigidbody.AddForce(jumpForse * Vector3.up, ForceMode2D.Impulse);
 
-        Invoke("JumpDown", jumpTimer);
-        
-        isJump = false; 
+        _rigidbody.velocity = new Vector2(0f, _rigidbody.velocity.y);
     }
 
     public void JumpDown()
     {
-        //_rigidbody.gravityScale = 0f;
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == (int)Layer.Ground)
+        {
+
+            isJump = false;
+        }
     }
 
 }
