@@ -5,7 +5,8 @@ using UnityEngine;
 enum Layer
 {
     Ground = 6,
-    Obstacle = 7
+    Obstacle = 7,
+    Boat = 8,
 }
 
 public enum Scene
@@ -105,7 +106,8 @@ public class PlayerController : BaseController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == (int)Layer.Ground)
+        if(collision.gameObject.layer == (int)Layer.Ground
+            || collision.gameObject.layer == (int)Layer.Boat)
         {
 
             isJump = false;
