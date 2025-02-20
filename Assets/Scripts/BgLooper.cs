@@ -12,6 +12,8 @@ public class BgLooper : MonoBehaviour
     int count = 0;
     Vector3 collsionPos = Vector3.zero;
 
+    public int hillCount = 0;
+
 
     void Start()
     {

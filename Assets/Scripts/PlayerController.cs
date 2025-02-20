@@ -119,7 +119,6 @@ public class PlayerController : BaseController
         if(collision.gameObject.layer == (int)Layer.Ground
             || collision.gameObject.layer == (int)Layer.Boat)
         {
-
             isJump = false;
         }
     }
