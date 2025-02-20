@@ -8,6 +8,8 @@ TagManager:
   - Background
   - MiddleBackground
   - Boat
+  - Obstacle_Hill
+  - Obstacle_Bridge
   layers:
   - Default
   - TransparentFX

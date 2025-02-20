@@ -9,7 +9,6 @@ public class ButtonManager : MonoBehaviour
     Button homeButton;
     Button gameButton;
 
-
     public void Awake()
     {
         homeButton = transform.GetChild(1).Find("HomeButton").GetComponent<Button>();

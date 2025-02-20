@@ -23,10 +23,10 @@ public class BoatController : BaseController
 
     protected override void HandleAction()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        //float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        movementDirection = new Vector2(horizontal, vertical).normalized;
+        movementDirection = new Vector2(1f, vertical).normalized;
     }
 
 

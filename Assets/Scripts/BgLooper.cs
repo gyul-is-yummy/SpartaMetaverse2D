@@ -25,7 +25,7 @@ public class BgLooper : MonoBehaviour
     }
 
     //충돌했을 때
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Triggered: " + collision.name);
 
@@ -54,7 +54,7 @@ public class BgLooper : MonoBehaviour
         }
 
 
-        if (collision.CompareTag("Obstacle"))
+        if (collision.CompareTag("Obstacle_Hill"))
         {
             collsionPos = collision.transform.position;
 
@@ -64,7 +64,18 @@ public class BgLooper : MonoBehaviour
 
             return;
         }
-        
+
+        if (collision.CompareTag("Obstacle_Bridge"))
+        {
+            collsionPos = collision.transform.position;
+
+            collsionPos.x += widthOfBgObject * numBgCount;
+
+            collision.transform.position = collsionPos;
+
+            return;
+        }
+
 
     }
 }
