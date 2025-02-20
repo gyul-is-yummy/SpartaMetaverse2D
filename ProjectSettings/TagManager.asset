@@ -10,6 +10,7 @@ TagManager:
   - Boat
   - Obstacle_Hill
   - Obstacle_Bridge
+  - GameButton
   layers:
   - Default
   - TransparentFX

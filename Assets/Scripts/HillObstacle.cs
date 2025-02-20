@@ -14,6 +14,7 @@ public class HillObstacle : MonoBehaviour
         if(collision.CompareTag("Boat"))
         {
             Debug.Log("언덕이 보트와 충돌");
+
             UIManager.Instance.GameOver();
         }
     }

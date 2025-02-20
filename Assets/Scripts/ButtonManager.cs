@@ -21,12 +21,16 @@ public class ButtonManager : MonoBehaviour
     public void OnClickGameButton()
     {
         Time.timeScale = 1.0f;
+
+        GameManager.Instance.CurrentScene = Scene.MiniGame;
         SceneManager.LoadScene("MiniGameScene");
     }
 
     public void OnClickHomeButton()
     {
         Time.timeScale = 1.0f;
+
+        GameManager.Instance.CurrentScene = Scene.Main;
         SceneManager.LoadScene("MainScene");
     }
 }

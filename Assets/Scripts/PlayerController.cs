@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public enum Layer
 {
     Player = 3,
@@ -10,19 +11,17 @@ public enum Layer
     Boat = 8,
 }
 
-public enum Scene
-{
-    Main,
-    MiniGame
-}
+
 
 public class PlayerController : BaseController
 {
+
+
     [SerializeField] private Transform weaponPivot;
 
     public float jumpForse = 0f;
 
-    Scene CurrentScene;
+    
 
     //private Camera camera;
     public bool isJump = false;
@@ -35,6 +34,8 @@ public class PlayerController : BaseController
 
     GameObject boatObject;
 
+
+
     protected override void Start()
     {
         base.Start();
@@ -45,7 +46,6 @@ public class PlayerController : BaseController
 
         jumpForse = 7f;
 
-        CurrentScene = Scene.MiniGame;
     }
    
     protected override void Update()
@@ -73,7 +73,7 @@ public class PlayerController : BaseController
 
     protected override void HandleAction()
     {
-        if (CurrentScene == Scene.MiniGame)
+        if (GameManager.Instance.CurrentScene == Scene.MiniGame)
         {   
             if(isJump)
             {
@@ -107,6 +107,8 @@ public class PlayerController : BaseController
 
     public void Jump() 
     {
+        if (GameManager.Instance.CurrentScene != Scene.MiniGame) return;
+
         isJump = true;
 
         //а║га╫це╢
@@ -121,6 +123,27 @@ public class PlayerController : BaseController
         {
             isJump = false;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "GameButton")
+        {
+            collision.transform.GetChild(0).gameObject.SetActive(false);
+            collision.transform.GetChild(1).gameObject.SetActive(true);
+
+            //MiniGameStart();
+
+            Invoke("MiniGameStart", 1f);
+
+
+        }
+    }
+
+    void MiniGameStart()
+    {
+        GameManager.Instance.CurrentScene = Scene.MiniGame;
+        SceneManager.LoadScene("MiniGameScene"); 
     }
 
 }
